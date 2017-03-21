@@ -12,7 +12,10 @@ export class MainRoot {
     constructor(private configService: ConfigService, route: ActivatedRoute, router: Router) {
         this.configService.setConfig().subscribe(r => {
             route.routeConfig.children = this.configService.getConfig();
-            router.navigate([route.routeConfig.children[0].path]);
+            // load default-route
+            if (router.routerState.snapshot.url === '/') {
+                router.navigate([route.routeConfig.children[0].path]);
+            }
         });
     }
 }
