@@ -1,0 +1,3 @@
+<a *ngFor="let child of route.snapshot.routeConfig.children" routerLink="{{child.path}}"> / {{child.path}}</a>
+<br>
+<router-outlet></router-outlet>
